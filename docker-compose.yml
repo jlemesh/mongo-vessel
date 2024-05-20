@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  router:
+    image: mongodb/mongodb-community-server:7.0.9-ubuntu2204
+    command: mongos --port 27017 --configdb configReplSet/configsvr:27017 --bind_ip_all
+    ports:
+      - 27017:27017
+    volumes:
+      - ./scripts:/scripts
+      - ./routerdb:/data/db
+
+  configsvr:
+    image: mongodb/mongodb-community-server:7.0.9-ubuntu2204
+    command: mongod --configsvr --replSet configReplSet --port 27017
+    ports:
+      - 27118:27017
+    volumes:
+      - ./scripts:/scripts
+      - ./configdb:/data/db
+
+  shard1:
+    image: mongodb/mongodb-community-server:7.0.9-ubuntu2204
+    command: mongod --shardsvr --replSet shard1ReplSet --port 27017
+    ports:
+      - 27114:27017
+    volumes:
+      - ./scripts:/scripts
+      - ./shard1db:/data/db
+
+  shard2:
+    image: mongodb/mongodb-community-server:7.0.9-ubuntu2204
+    command: mongod --shardsvr --replSet shard1ReplSet --port 27017
+    ports:
+      - 27115:27017
+    volumes:
+      - ./scripts:/scripts
+      - ./shard2db:/data/db
+
+  shard3:
+    image: mongodb/mongodb-community-server:7.0.9-ubuntu2204
+    command: mongod --shardsvr --replSet shard1ReplSet --port 27017
+    ports:
+      - 27116:27017
+    volumes:
+      - ./scripts:/scripts
+      - ./shard3db:/data/db
