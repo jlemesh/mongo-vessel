@@ -164,3 +164,5 @@ shard1db/
 shard2db/
 shard3db/
 routerdb/
+data/*
+!data/.gitkeep
