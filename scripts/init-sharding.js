@@ -6,7 +6,15 @@ db.data.createIndex( {
 {
   name: 'mmsiTimestamp'
 } )
+db.filtered.createIndex( {
+  MMSI: 1,
+  '# Timestamp': 1
+},
+{
+  name: 'mmsiTimestamp'
+} )
 sh.shardCollection("vessels.data", { MMSI: 1, '# Timestamp': 1} )
+sh.shardCollection("vessels.filtered", { MMSI: 1, '# Timestamp': 1} )
 db.data.createIndex( {
   Longitude: 1,
   Latitude: 1,
@@ -19,3 +27,9 @@ db.data.createIndex( {
 {
   name: 'lookupFiltering'
 } )
+db.filtered.createIndex( {
+  MMSI: 1
+})
+db.filtered.createIndex( {
+  '# Timestamp': 1
+})

@@ -19,6 +19,7 @@ docker rm -f mongo-vessel-shard1-1 mongo-vessel-shard2-1 mongo-vessel-shard3-1 m
 ## Load data
 
 - Put data file in `data` directory: http://web.ais.dk/aisdata/aisdk-2023-05-01.zip
+- pip install -r requirements.txt
 - Activate `venv`: `source .venv/bin/activate`
 - Run: `python load.py`
 
