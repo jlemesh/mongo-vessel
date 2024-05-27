@@ -13,6 +13,7 @@ sh.status()
 # stop
 docker-compose down -v --remove-orphans
 
+# clueanup
 docker rm -f mongo-vessel-shard1-1 mongo-vessel-shard2-1 mongo-vessel-shard3-1 mongo-vessel-router-1 mongo-vessel-configsvr-1 && docker volume prune -f
 ```
 
@@ -23,4 +24,4 @@ docker rm -f mongo-vessel-shard1-1 mongo-vessel-shard2-1 mongo-vessel-shard3-1 m
 - Activate `venv`: `source .venv/bin/activate`
 - Run: `python load.py`
 
-Data contains approximately 12 million entries and would take several hours to load depending on resources.
+Data contains approximately 12 000 000 entries, but the scripts would load 2 000 000, which would take around 10 minutes on a 8 core/32GB RAM machine.
