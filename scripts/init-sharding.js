@@ -1,4 +1,5 @@
 sh.enableSharding("vessels")
+use vessels
 db.data.createIndex( {
   MMSI: 1,
   '# Timestamp': 1
