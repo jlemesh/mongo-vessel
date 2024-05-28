@@ -14,7 +14,7 @@ db.printShardingStatus()
 # stop
 docker-compose down -v --remove-orphans
 
-# clueanup
+# stop and cleanup
 docker rm -f mongo-vessel-shard1-1 mongo-vessel-shard2-1 mongo-vessel-shard3-1 mongo-vessel-router-1 mongo-vessel-configsvr-1 && docker volume prune -f
 ```
 
